@@ -10,18 +10,27 @@ prints the house details using the getters and String.format()
  */
 
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println("User please insert the value");
+        Scanner scanner = new Scanner(System.in);
 
         House house = new House();
 
-        house.setFloorsNumber(3);
-        house.setAddess("via Tarquinio 21");
+        System.out.println("insert the number of floors : ");
+        int numOfFloors1 = scanner.nextInt();
+        house.setFloorsNumber(numOfFloors1);
 
-        String[] residentNames = {"Aldo" , "Giovanni" , "Giacomo"};
+        System.out.println("insert the address : ");
+        scanner.nextLine(); // qui per consumare il carattere di fine stringa ,senza causa problemiin input
+        String address1 = scanner.nextLine();
+        house.setAddess(address1);
 
+        System.out.println("insert the resident names separated by comma (,) : ");
+        String residentsIn = scanner.nextLine();
+        String[] residentNames = residentsIn.split(",");
         house.setResidentsNames(residentNames);
 
         System.out.println(String.format("Floors : %d" , house.getFloorsNumber()));
